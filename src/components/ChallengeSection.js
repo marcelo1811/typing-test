@@ -4,16 +4,25 @@ import { ChallengeSectionContainer, InputArea, InputField, RefreshButton, TimerD
 import WordItem from "./WordItem";
 
 export default function ChallengeSection() {
-  const { wordList, incrementActiveWordIndex, inputValue, setInputValue, resetChallenge } = useContext(ChallengeContext)
+  const {
+    wordList,
+    incrementCurrentWordIndex,
+    inputValue,
+    setInputValue,
+    resetChallenge,
+  } = useContext(ChallengeContext)
 
   function handleChange(e) {
-    setInputValue(e.target.value)
+    let inputValue = e.target.value
+    setInputValue(inputValue)
   }
-
+  
   function handleKeyDown(e) {
     // if space key pressed
     if (e.keyCode == 32){
-      incrementActiveWordIndex()
+      // prevent from adding spaces
+      e.preventDefault()
+      incrementCurrentWordIndex()
       setInputValue('')
     }
   }
@@ -21,11 +30,11 @@ export default function ChallengeSection() {
   return (
     <ChallengeSectionContainer>
       <WordsDisplay>
-        {wordList.map((word) => {
+        {wordList.map((word, index) => {
           return (
-            <WordItem word={word} />
-            )
-          })}
+            <WordItem word={word} index={index} />
+          )
+        })}
       </WordsDisplay>
       <InputArea>
         <InputField
