@@ -63,15 +63,13 @@ export default function ChallengeSection() {
           onKeyDown={handleKeyDown}
           value={inputValue}
           disabled={hasFinishedCountdown} />
-          <Countdown>
-            1:00
-          </Countdown>
-          <RefreshButton
-            type='button'
-            onClick={handleClick}
-            >
-            Recomeçar
-          </RefreshButton>
+        <Countdown />
+        <RefreshButton
+          type='button'
+          onClick={handleClick}
+          >
+          Recomeçar
+        </RefreshButton>
       </InputArea>
     </ChallengeSectionContainer>
   )

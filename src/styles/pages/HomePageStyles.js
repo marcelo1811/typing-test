@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
 export const HomePageContainer = styled.div`
-  background-color: blue;
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1rem repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
-    "sidebar . . . ."
-    "sidebar ChallengeSection ChallengeSection ChallengeSection ."
-    "sidebar ResultsSection ResultsSection ResultsSection . "
-    "sidebar ResultsSection ResultsSection ResultsSection ."
-    "sidebar . . . ."
+    ". Header Header Header Header"
+    ". ChallengeSection ChallengeSection ChallengeSection ."
+    ". ResultsSection ResultsSection ResultsSection . "
+    ". ResultsSection ResultsSection ResultsSection ."
+    ". . . . ."
 `
