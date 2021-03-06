@@ -4,6 +4,7 @@ import ChallengeSection from '../components/ChallengeSection'
 import { HomePageContainer } from '../styles/pages/HomePageStyles'
 import { ChallengeProvider } from '../contexts/ChallengeContext'
 import { CountdownProvider } from '../contexts/CountdownContext'
+import ResultsSection from '../components/ResultsSection'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <ChallengeProvider>
         <CountdownProvider>
           <ChallengeSection />
+          <ResultsSection />
         </CountdownProvider>
       </ChallengeProvider>
     </HomePageContainer>

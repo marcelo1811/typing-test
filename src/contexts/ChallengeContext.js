@@ -43,6 +43,14 @@ export function ChallengeProvider({ children, ...rest }) {
     return correctWordIndexList.includes(index)
   }
 
+  function challengeResults() {
+    let totalCorrectWords = correctWordIndexList.length
+    return ({
+      totalCorrectWords: totalCorrectWords,
+      totalIncorrectWords: currentWordIndex - totalCorrectWords
+    })
+  }
+
   return (
     <ChallengeContext.Provider
       value={{
@@ -56,6 +64,7 @@ export function ChallengeProvider({ children, ...rest }) {
         isCurrentWordCorrect,
         checkWord,
         wasWordCorrect,
+        challengeResults,
       }}>
       {children}
     </ChallengeContext.Provider>

@@ -9,7 +9,7 @@ export const HomePageContainer = styled.div`
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "sidebar ChallengeSection ChallengeSection ChallengeSection ."
-    "sidebar . . . ."
-    "sidebar . . . ."
+    "sidebar ResultsSection ResultsSection ResultsSection . "
+    "sidebar ResultsSection ResultsSection ResultsSection ."
     "sidebar . . . ."
 `

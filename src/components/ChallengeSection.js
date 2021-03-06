@@ -13,13 +13,13 @@ export default function ChallengeSection() {
     setInputValue,
     resetChallenge,
     checkWord,
-    setIsResultModalOpen,
   } = useContext(ChallengeContext)
 
   const {
     startCountdown,
     resetCountdown,
     isActive: isActiveCountdown,
+    hasFinished: hasFinishedCountdown,
   } = useContext(CountdownContext)
 
   function handleChange(e) {
@@ -61,7 +61,8 @@ export default function ChallengeSection() {
           type='text'
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          value={inputValue} />
+          value={inputValue}
+          disabled={hasFinishedCountdown} />
           <Countdown>
             1:00
           </Countdown>
