@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ScreenSizes from "../constants/ScreenSizes";
 
 export const HomePageContainer = styled.div`
   height: 100vh;
@@ -11,5 +12,15 @@ export const HomePageContainer = styled.div`
     ". ChallengeSection ChallengeSection ChallengeSection ."
     ". ResultsSection . . ."
     ". ResultsSection . . ."
-    ". . . . ."
+    ". . . . .";
+
+  @media (${ScreenSizes.maxSm}) {
+    grid-template-columns: 2rem 1fr 2rem;
+    grid-template-rows: auto repeat(2, 1fr) 2rem;
+    grid-template-areas:
+    ". Header ."
+    ". ChallengeSection ."
+    ". ResultsSection ."
+    ". . ."
+  }
 `

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { createRef, useContext, useEffect, useRef, useState } from "react";
 import { ChallengeContext } from "../contexts/ChallengeContext";
 import { CountdownContext } from "../contexts/CountdownContext";
 import { ChallengeSectionContainer, InputArea, InputField, RefreshButton, WordsDisplay } from "../styles/components/ChallengeSectionStyles";
@@ -13,6 +13,7 @@ export default function ChallengeSection() {
     setInputValue,
     resetChallenge,
     checkWord,
+    currentWordIndex,
   } = useContext(ChallengeContext)
 
   const {
@@ -21,6 +22,8 @@ export default function ChallengeSection() {
     isActive: isActiveCountdown,
     hasFinished: hasFinishedCountdown,
   } = useContext(CountdownContext)
+
+  const wordsRef = useRef([])
 
   function handleChange(e) {
     let inputValue = e.target.value
@@ -47,12 +50,22 @@ export default function ChallengeSection() {
     resetCountdown()
   }
 
+  useEffect(() => {
+    wordsRef.current[currentWordIndex].scrollIntoView()
+  }, [currentWordIndex])
+
   return (
     <ChallengeSectionContainer>
       <WordsDisplay>
         {wordList.map((word, index) => {
           return (
-            <WordItem word={word} index={index} key={index} />
+            <div ref={ref => (wordsRef.current[index] = ref)}>
+              <WordItem
+                word={word}
+                index={index}
+                key={index}
+              />
+            </div>
           )
         })}
       </WordsDisplay>
