@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 export const WordItemWrapper = styled.span`
   background-color: ${props => props.isCurrentWord && Colors.gray};

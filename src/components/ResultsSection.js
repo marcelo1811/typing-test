@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ChallengeContext } from "../contexts/ChallengeContext";
 import { ResultsTitle, ResultsSectionContainer, ResultsDetailsContainer, ResultDetailsRows, ResultDetailsValue, ResultsSubtitle } from "../styles/components/ResultsSectionStyles";
-import Colors from "../styles/constants/colors";
+import Colors from "../styles/constants/Colors";
 
 export default function ResultsSection() {
   const { challengeResults } = useContext(ChallengeContext)

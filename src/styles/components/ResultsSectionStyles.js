@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Colors from "../constants/colors";
+import Colors from "../constants/Colors";
 
 export const ResultsSectionContainer = styled.div`
   grid-area: ResultsSection;
