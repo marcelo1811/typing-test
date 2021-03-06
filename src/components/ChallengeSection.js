@@ -1,6 +1,8 @@
 import { useContext } from "react";
-import { ChallengeProvider, ChallengeContext } from "../contexts/ChallengeContext";
-import { ChallengeSectionContainer, InputArea, InputField, RefreshButton, TimerDisplay, WordsDisplay } from "../styles/components/ChallengeSectionStyles";
+import { ChallengeContext } from "../contexts/ChallengeContext";
+import { CountdownContext } from "../contexts/CountdownContext";
+import { ChallengeSectionContainer, InputArea, InputField, RefreshButton, WordsDisplay } from "../styles/components/ChallengeSectionStyles";
+import Countdown from "./Countdown";
 import WordItem from "./WordItem";
 
 export default function ChallengeSection() {
@@ -10,7 +12,15 @@ export default function ChallengeSection() {
     inputValue,
     setInputValue,
     resetChallenge,
+    checkWord,
+    setIsResultModalOpen,
   } = useContext(ChallengeContext)
+
+  const {
+    startCountdown,
+    resetCountdown,
+    isActive: isActiveCountdown,
+  } = useContext(CountdownContext)
 
   function handleChange(e) {
     let inputValue = e.target.value
@@ -19,12 +29,22 @@ export default function ChallengeSection() {
   
   function handleKeyDown(e) {
     // if space key pressed
+    if (!isActiveCountdown) {
+      startCountdown()
+    }
+
     if (e.keyCode == 32){
       // prevent from adding spaces
       e.preventDefault()
       incrementCurrentWordIndex()
+      checkWord()
       setInputValue('')
     }
+  }
+
+  function handleClick() {
+    resetChallenge()
+    resetCountdown()
   }
 
   return (
@@ -32,7 +52,7 @@ export default function ChallengeSection() {
       <WordsDisplay>
         {wordList.map((word, index) => {
           return (
-            <WordItem word={word} index={index} />
+            <WordItem word={word} index={index} key={index} />
           )
         })}
       </WordsDisplay>
@@ -42,15 +62,21 @@ export default function ChallengeSection() {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           value={inputValue} />
-        <TimerDisplay>
-          1:00
-        </TimerDisplay>
-        <RefreshButton
-          type='button'
-          onClick={resetChallenge}
-        >
-          Recomeçar
-        </RefreshButton>
+          <Countdown>
+            1:00
+          </Countdown>
+          <RefreshButton
+            type='button'
+            onClick={handleClick}
+            >
+            Recomeçar
+          </RefreshButton>
+          <RefreshButton
+            type='button'
+            onClick={startCountdown}
+            >
+            Iniciar
+          </RefreshButton>
       </InputArea>
     </ChallengeSectionContainer>
   )

@@ -5,15 +5,11 @@ const mappedWords = allWords.map(item => item.word)
 
 export const ChallengeContext = createContext({})
 
-
 export function ChallengeProvider({ children, ...rest }) {
   const [wordList, setWordList] = useState(mappedWords.slice(0, 20))
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [inputValue, setInputValue] = useState('')
-
-  function currentWord() {
-    return wordList[currentWordIndex]
-  }
+  const [correctWordIndexList, setCorrectWordIndexList] = useState([])
 
   function isCurrentWord(index) {
     return (
@@ -28,11 +24,23 @@ export function ChallengeProvider({ children, ...rest }) {
   function resetChallenge() {
     setInputValue('')
     setCurrentWordIndex(0)
+    setCorrectWordIndexList([])
   }
 
   function isCurrentWordCorrect() {
     let currentWord = wordList[currentWordIndex]
     return currentWord.includes(inputValue)
+  }
+  
+  function checkWord() {
+    let currentWord = wordList[currentWordIndex]
+    if (inputValue == currentWord) {
+      setCorrectWordIndexList([...correctWordIndexList, currentWordIndex])
+    }
+  }
+
+  function wasWordCorrect(index) {
+    return correctWordIndexList.includes(index)
   }
 
   return (
@@ -45,7 +53,9 @@ export function ChallengeProvider({ children, ...rest }) {
         setInputValue,
         resetChallenge,
         currentWordIndex,
-        isCurrentWordCorrect
+        isCurrentWordCorrect,
+        checkWord,
+        wasWordCorrect,
       }}>
       {children}
     </ChallengeContext.Provider>
