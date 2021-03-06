@@ -45,9 +45,17 @@ export function ChallengeProvider({ children, ...rest }) {
 
   function challengeResults() {
     let totalCorrectWords = correctWordIndexList.length
+    let totalIncorrectWords = currentWordIndex - totalCorrectWords
+    let totalWords = totalCorrectWords + totalIncorrectWords
+    let totalPressedKeys = wordList.slice(0, currentWordIndex).map((word) => {
+      return word.length
+    }).reduce((acum, current) => acum + current, 0)
+
     return ({
+      totalPressedKeys: totalPressedKeys, 
       totalCorrectWords: totalCorrectWords,
-      totalIncorrectWords: currentWordIndex - totalCorrectWords
+      totalIncorrectWords: totalIncorrectWords,
+      totalWords: totalWords,
     })
   }
 

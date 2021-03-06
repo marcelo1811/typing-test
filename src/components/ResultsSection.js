@@ -4,14 +4,26 @@ import { ResultsSectionContainer } from "../styles/components/ResultsSectionStyl
 
 export default function ResultsSection() {
   const { challengeResults } = useContext(ChallengeContext)
+  const {
+    totalPressedKeys,
+    totalCorrectWords,
+    totalIncorrectWords,
+    totalWords,
+  } = challengeResults()
 
   return (
     <ResultsSectionContainer>
       <div>
-        Palavras corretas: {challengeResults().totalCorrectWords}
+        PPM: {totalWords}
       </div>
       <div>
-        Palavras incorretas: {challengeResults().totalIncorrectWords}
+        Tecladas: {totalPressedKeys}
+      </div>
+      <div>
+        Palavras corretas: {totalCorrectWords}
+      </div>
+      <div>
+        Palavras incorretas: {totalIncorrectWords}
       </div>
     </ResultsSectionContainer>
   )

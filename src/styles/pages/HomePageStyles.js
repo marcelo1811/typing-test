@@ -6,8 +6,9 @@ export const HomePageContainer = styled.div`
   width: 100vw;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1rem repeat(4, 1fr);
   grid-template-areas:
+    "sidebar . . . ."
     "sidebar ChallengeSection ChallengeSection ChallengeSection ."
     "sidebar ResultsSection ResultsSection ResultsSection . "
     "sidebar ResultsSection ResultsSection ResultsSection ."
