@@ -27,22 +27,11 @@ export default function ChallengeSection() {
 
   function handleChange(e) {
     let inputValue = e.target.value
-    setInputValue(inputValue)
-  }
-  
-  function handleKeyDown(e) {
-    // if space key pressed
-    if (!isActiveCountdown) {
-      startCountdown()
-    }
-
-    if (e.keyCode == 32){
-      // prevent from adding spaces
-      e.preventDefault()
-      incrementCurrentWordIndex()
-      checkWord()
-      setInputValue('')
-    }
+    if (inputValue.slice(-1) != ' ') return setInputValue(inputValue)
+    if (!isActiveCountdown) startCountdown()
+    incrementCurrentWordIndex()
+    checkWord()
+    setInputValue('')
   }
 
   function handleClick() {
@@ -59,11 +48,13 @@ export default function ChallengeSection() {
       <WordsDisplay>
         {wordList.map((word, index) => {
           return (
-            <div ref={ref => (wordsRef.current[index] = ref)}>
+            <div
+              ref={ref => (wordsRef.current[index] = ref)}
+              key={index}
+            >
               <WordItem
                 word={word}
                 index={index}
-                key={index}
               />
             </div>
           )
@@ -73,8 +64,9 @@ export default function ChallengeSection() {
         <InputField
           type='text'
           onChange={handleChange}
-          onKeyDown={handleKeyDown}
           value={inputValue}
+          autoCapitalize='none'
+          autoCorrect='off'
           disabled={hasFinishedCountdown} />
         <Countdown />
         <RefreshButton

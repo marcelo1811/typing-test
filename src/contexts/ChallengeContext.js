@@ -12,9 +12,7 @@ export function ChallengeProvider({ children, ...rest }) {
   const [correctWordIndexList, setCorrectWordIndexList] = useState([])
 
   function isCurrentWord(index) {
-    return (
-      currentWordIndex == index
-    )
+    return currentWordIndex == index
   }
 
   function incrementCurrentWordIndex() {
@@ -34,9 +32,7 @@ export function ChallengeProvider({ children, ...rest }) {
   
   function checkWord() {
     let currentWord = wordList[currentWordIndex]
-    if (inputValue == currentWord) {
-      setCorrectWordIndexList([...correctWordIndexList, currentWordIndex])
-    }
+    if (inputValue == currentWord) setCorrectWordIndexList([...correctWordIndexList, currentWordIndex])
   }
 
   function wasWordCorrect(index) {

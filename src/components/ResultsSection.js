@@ -15,7 +15,7 @@ export default function ResultsSection() {
   return (
     <ResultsSectionContainer>
       <ResultsTitle>
-        {totalWords} PPMs
+        {totalWords} PPM
       </ResultsTitle>
       <ResultsSubtitle>
         (Palavras por minuto)
