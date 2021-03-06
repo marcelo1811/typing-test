@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import Colors from "../constants/colors";
 
 export const WordItemWrapper = styled.span`
-  background-color: ${props => props.isCurrentWord && '#DDDDDD'};
-  color: ${props => props.isCurrentWord && !props.isCurrentWordCorrect && 'red'};
-  color: ${props => props.isCheckedWord &&(props.wasWordCorrect ? 'green' : 'red')};
+  background-color: ${props => props.isCurrentWord && Colors.gray};
+  color: ${props => props.isCurrentWord && !props.isCurrentWordCorrect && Colors.red};
+  color: ${props => props.isCheckedWord &&(props.wasWordCorrect ? Colors.green : Colors.red)};
   padding: 0.5rem;
   border-radius: 5px;
 `

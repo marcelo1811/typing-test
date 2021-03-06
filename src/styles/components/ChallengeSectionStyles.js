@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Colors from "../constants/colors"
 
 export const ChallengeSectionContainer = styled.div`
   grid-area: ChallengeSection;
@@ -15,7 +16,7 @@ export const WordsDisplay = styled.div`
   display: flex;
   flex-wrap: wrap;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: ${Colors.lightGray};
 `
 
 export const InputArea = styled.div`
@@ -35,8 +36,8 @@ export const InputField = styled.input`
 
 export const RefreshButton = styled.button`
   height: 3rem;
-  background-color: #3276B1;
-  color: white;
+  background-color: ${Colors.primary};
+  color: ${Colors.white};
   font-weight: bold;
   border-radius: 5px;
   border-style: none;

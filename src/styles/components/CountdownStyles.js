@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import Colors from "../constants/colors";
 
 export const CountdownContainer = styled.div`
-  color: white;
+  color: ${Colors.white};
   font-weight: bold;
-  background-color: #3D4D5C;
+  background-color: ${Colors.darkGray};
   width: 5rem;
   height: 3rem;
   display: flex;
