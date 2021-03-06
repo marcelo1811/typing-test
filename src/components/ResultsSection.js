@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ChallengeContext } from "../contexts/ChallengeContext";
-import { ResultsSectionContainer } from "../styles/components/ResultsSectionStyles";
+import { ResultsTitle, ResultsSectionContainer, ResultsDetailsContainer, ResultDetailsRows, ResultDetailsValue, ResultsSubtitle } from "../styles/components/ResultsSectionStyles";
+import Colors from "../styles/constants/colors";
 
 export default function ResultsSection() {
   const { challengeResults } = useContext(ChallengeContext)
@@ -13,18 +14,38 @@ export default function ResultsSection() {
 
   return (
     <ResultsSectionContainer>
-      <div>
-        PPM: {totalWords}
-      </div>
-      <div>
-        Tecladas: {totalPressedKeys}
-      </div>
-      <div>
-        Palavras corretas: {totalCorrectWords}
-      </div>
-      <div>
-        Palavras incorretas: {totalIncorrectWords}
-      </div>
+      <ResultsTitle>
+        {totalWords} PPMs
+      </ResultsTitle>
+      <ResultsSubtitle>
+        (Palavras por minuto)
+      </ResultsSubtitle>
+      <ResultsDetailsContainer>
+        <ResultDetailsRows>
+          <div>
+            Tecladas
+          </div>
+          <ResultDetailsValue>
+            {totalPressedKeys}
+          </ResultDetailsValue>
+        </ResultDetailsRows>
+        <ResultDetailsRows>
+          <div>
+            Palavras corretas
+          </div>
+          <ResultDetailsValue color={Colors.green}>
+            {totalCorrectWords}
+          </ResultDetailsValue>
+        </ResultDetailsRows>
+        <ResultDetailsRows>
+          <div>
+            Palavras erradas
+          </div>
+          <ResultDetailsValue color={Colors.red}>
+            {totalIncorrectWords}
+          </ResultDetailsValue>
+        </ResultDetailsRows>
+      </ ResultsDetailsContainer>
     </ResultsSectionContainer>
   )
 }

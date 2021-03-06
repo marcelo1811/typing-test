@@ -9,7 +9,7 @@ export const HomePageContainer = styled.div`
   grid-template-areas:
     ". Header Header Header Header"
     ". ChallengeSection ChallengeSection ChallengeSection ."
-    ". ResultsSection ResultsSection ResultsSection . "
-    ". ResultsSection ResultsSection ResultsSection ."
+    ". ResultsSection . . ."
+    ". ResultsSection . . ."
     ". . . . ."
 `
