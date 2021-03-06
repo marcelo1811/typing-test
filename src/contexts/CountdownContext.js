@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const CountdownContext = createContext({})
 
 // TODO: FIX TIME TO 60 SEC
-const initialTimeout = 1 * 5
+const initialTimeout = 1 * 30
 
 export function CountdownProvider({children}) {
   const [time, setTime] = useState(initialTimeout);

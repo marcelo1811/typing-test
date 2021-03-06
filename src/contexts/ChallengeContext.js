@@ -6,7 +6,7 @@ const mappedWords = allWords.map(item => item.word)
 export const ChallengeContext = createContext({})
 
 export function ChallengeProvider({ children, ...rest }) {
-  const [wordList, setWordList] = useState(mappedWords.slice(0, 20))
+  const [wordList, setWordList] = useState(mappedWords.slice(0, 100))
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [inputValue, setInputValue] = useState('')
   const [correctWordIndexList, setCorrectWordIndexList] = useState([])

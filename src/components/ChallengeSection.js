@@ -72,12 +72,6 @@ export default function ChallengeSection() {
             >
             Recomeçar
           </RefreshButton>
-          <RefreshButton
-            type='button'
-            onClick={startCountdown}
-            >
-            Iniciar
-          </RefreshButton>
       </InputArea>
     </ChallengeSectionContainer>
   )

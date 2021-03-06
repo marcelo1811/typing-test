@@ -12,6 +12,8 @@ export const WordsDisplay = styled.div`
   background-color: yellow;
   padding: 1rem;
   font-size: 1.8rem;
+  height: 10rem;
+  overflow-y: hidden;
   display: flex;
   flex-wrap: wrap;
 `
